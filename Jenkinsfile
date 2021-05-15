@@ -26,7 +26,7 @@ pipeline {
 		
 		stage("Copy the war file to tomcat server"){
 	    steps{
-	        sshagent(['tomcat']) {
+	        sshagent(['tomcatconnect']) {
             sh 'scp -o StrictHostKeyChecking=no target/*.war root@10.10.10.6:/root/tomcat/webapps'
 		}
 	    }
