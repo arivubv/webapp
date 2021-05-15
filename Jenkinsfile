@@ -18,5 +18,10 @@ pipeline {
 			git 'https://github.com/arivubv/webapp.git'
 			}
 		}
+		stage ('build'){
+			steps {
+			sh 'mvn clean pakage'
+			}
+		}
 	}
 }
