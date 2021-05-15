@@ -23,5 +23,13 @@ pipeline {
 			sh 'mvn clean package'
 			}
 		}
+		
+		stage("Copy the war file to tomcat server"){
+	    steps{
+	        sshagent(['tomcat']) {
+            sh 'scp -o StrictHostKeyChecking=no target/*.war root@10.10.10.6:/root/tomcat/webapps'
+		}
+	    }
+		}
 	}
 }
